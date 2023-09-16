@@ -1,5 +1,5 @@
 import axios from "axios";
-
+const password = import.meta.env.VITE_REACT_APP_API_PWD;
 const getPageScreenshot = async (url) => {
   const post_array = [];
   post_array.push({
@@ -10,7 +10,7 @@ const getPageScreenshot = async (url) => {
     url: "https://api.dataforseo.com/v3/on_page/page_screenshot",
     auth: {
       username: "sagarprasad480@gmail.com",
-      password: "da357a49e523026e",
+      password: password,
     },
     data: post_array,
     headers: {

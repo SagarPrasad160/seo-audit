@@ -15,7 +15,12 @@ function PerformanceBars() {
   }
 
   if (categories) {
-    const { performance } = categories;
+    const {
+      performance,
+      accessibility,
+      seo,
+      "best-practices": bp,
+    } = categories;
 
     console.log(performance);
     return (
@@ -39,7 +44,7 @@ function PerformanceBars() {
             </div>
           </div>
         </div>
-        <div className="">
+        <div className="mb-5">
           <h2>
             {performance.title}: {Math.floor(performance.score * 100)}
           </h2>
@@ -57,6 +62,70 @@ function PerformanceBars() {
             >
               {Math.floor(performance.score * 100)}
             </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-4">
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Success example"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: `${Math.floor(accessibility.score * 100)}%` }}
+              >
+                {Math.floor(accessibility.score * 100)}
+              </div>
+            </div>
+            <h2>
+              {accessibility.title}:{accessibility.score * 100}
+            </h2>
+          </div>
+
+          <div className="col-md-4">
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Success example"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: `${Math.floor(seo.score * 100)}%` }}
+              >
+                {Math.floor(seo.score * 100)}
+              </div>
+            </div>
+            <h2>
+              {seo.title}: {seo.score * 100}
+            </h2>
+          </div>
+
+          <div className="col-md-4">
+            <div
+              className="progress"
+              role="progressbar"
+              aria-label="Success example"
+              aria-valuenow="25"
+              aria-valuemin="0"
+              aria-valuemax="100"
+            >
+              <div
+                className="progress-bar bg-success"
+                style={{ width: `${Math.floor(bp.score * 100)}%` }}
+              >
+                {Math.floor(bp.score * 100)}
+              </div>
+            </div>
+            <h2>
+              {bp.title}: {bp.score * 100}
+            </h2>
           </div>
         </div>
       </div>
