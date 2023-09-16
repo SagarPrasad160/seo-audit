@@ -35,7 +35,7 @@ function AuditForm() {
         const items = onPageResults[0].items;
         setOnPageResults({
           onpage_score: items[0].onpage_score,
-          loading: false,
+          meta: items[0].meta,
         });
 
         // Lighthouse Task API

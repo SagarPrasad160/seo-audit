@@ -1,12 +1,14 @@
 import { useContext } from "react";
 import { AuditContext } from "../context/AuditContext";
 
+import OnPage from "./OnPage";
+
 import Spinner from "./Spinner";
 
 function PerformanceBars() {
   const { lightHouseResults, onPageResults, loading, error } =
     useContext(AuditContext);
-  const onpage_score = onPageResults.onpage_score;
+  const { onpage_score, meta } = onPageResults;
 
   const { finalUrl, categories } = lightHouseResults;
 
@@ -29,7 +31,7 @@ function PerformanceBars() {
     );
   }
 
-  if (categories) {
+  if (categories && meta) {
     const {
       performance,
       accessibility,
@@ -37,11 +39,10 @@ function PerformanceBars() {
       "best-practices": bp,
     } = categories;
 
-    console.log(performance);
     return (
-      <div className="w-75 mx-auto">
+      <div className="w-75 mx-auto my-4">
+        <div className="fs-3 mb-5 text-center">Results for {finalUrl}</div>
         <div className="mb-4">
-          <h1 className="mb-3">Results for {finalUrl}</h1>
           <h2>On-Page Score: {Math.round(onpage_score)}</h2>
           <div
             className="progress"
@@ -79,7 +80,7 @@ function PerformanceBars() {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row mb-5">
           <div className="col-md-4">
             <div
               className="progress"
@@ -97,7 +98,7 @@ function PerformanceBars() {
               </div>
             </div>
             <h2>
-              {accessibility.title}:{accessibility.score * 100}
+              {accessibility.title}: {accessibility.score * 100}
             </h2>
           </div>
 
@@ -142,6 +143,10 @@ function PerformanceBars() {
               {bp.title}: {bp.score * 100}
             </h2>
           </div>
+        </div>
+        <div>
+          <div className="fs-4 mb-3">OnPage Results</div>
+          <OnPage meta={meta} />
         </div>
       </div>
     );
