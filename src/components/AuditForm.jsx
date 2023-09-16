@@ -69,14 +69,13 @@ function AuditForm() {
 
   return (
     <form
-      action=""
-      className="d-flex justify-content-center"
+      className="d-flex flex-wrap justify-content-center"
       onSubmit={handleSubmit}
     >
       <input
         type="text"
         value={url}
-        className="form-control m-2 w-25"
+        className="form-control m-2 w-50"
         onChange={({ target }) => setURL(target.value)}
         placeholder="Website URL"
       />
