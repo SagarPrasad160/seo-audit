@@ -4,7 +4,7 @@ import { AuditContext } from "../context/AuditContext";
 import Spinner from "./Spinner";
 
 function PerformanceBars() {
-  const { lightHouseResults, onPageResults, loading } =
+  const { lightHouseResults, onPageResults, loading, error } =
     useContext(AuditContext);
   const onpage_score = onPageResults.onpage_score;
 
@@ -12,6 +12,21 @@ function PerformanceBars() {
 
   if (loading) {
     return <Spinner />;
+  }
+
+  if (!loading && error) {
+    return (
+      <div className="d-flex align-items-center justify-content-center vh-100">
+        <div className="text-center">
+          <h1 className="display-1 fw-bold">500</h1>
+          <p className="fs-3">
+            {" "}
+            <span className="text-danger">Opps!</span>Server Error.
+          </p>
+          <p className="lead">Something went wrong.</p>
+        </div>
+      </div>
+    );
   }
 
   if (categories) {

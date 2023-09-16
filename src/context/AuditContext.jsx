@@ -17,6 +17,8 @@ export const AuditProvider = ({ children }) => {
 
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState(null);
+
   return (
     <AuditContext.Provider
       value={{
@@ -26,6 +28,8 @@ export const AuditProvider = ({ children }) => {
         setOnPageResults,
         loading,
         setLoading,
+        error,
+        setError,
       }}
     >
       {children}

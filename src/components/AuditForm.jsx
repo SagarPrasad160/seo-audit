@@ -15,7 +15,7 @@ import {
 function AuditForm() {
   const [url, setURL] = useState("");
 
-  const { setLighthouseResults, setOnPageResults, setLoading } =
+  const { setLighthouseResults, setOnPageResults, setLoading, setError } =
     useContext(AuditContext);
 
   const handleSubmit = async (e) => {
@@ -32,13 +32,11 @@ function AuditForm() {
           onPageTaskId
         );
 
-        console.log(onPageResults);
         const items = onPageResults[0].items;
         setOnPageResults({
           onpage_score: items[0].onpage_score,
           loading: false,
         });
-        console.log(items);
 
         // Lighthouse Task API
         const lightHouseTaskId = await createLighthouseTask(
@@ -60,6 +58,7 @@ function AuditForm() {
         setLoading(false);
       } catch (error) {
         setLoading(false);
+        setError(error);
         console.log(error);
       }
     } else {
