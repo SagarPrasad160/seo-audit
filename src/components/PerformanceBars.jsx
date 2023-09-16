@@ -42,10 +42,10 @@ function PerformanceBars() {
     return (
       <div className="w-75 mx-auto my-4">
         <div className="fs-3 mb-5 text-center">Results for {finalUrl}</div>
-        <div className="mb-4">
+        <div className="mb-5">
           <h2>On-Page Score: {Math.round(onpage_score)}</h2>
           <div
-            className="progress"
+            className="progress mb-3"
             role="progressbar"
             aria-label="Success example"
             aria-valuenow="25"
@@ -65,7 +65,7 @@ function PerformanceBars() {
             {performance.title}: {Math.floor(performance.score * 100)}
           </h2>
           <div
-            className="progress"
+            className="progress mb-3"
             role="progressbar"
             aria-label="Success example"
             aria-valuenow="25"
@@ -81,9 +81,9 @@ function PerformanceBars() {
           </div>
         </div>
         <div className="row mb-5">
-          <div className="col-md-4">
+          <div className="col-md-4 mb-4">
             <div
-              className="progress"
+              className="progress mb-3"
               role="progressbar"
               aria-label="Success example"
               aria-valuenow="25"
@@ -102,9 +102,9 @@ function PerformanceBars() {
             </h2>
           </div>
 
-          <div className="col-md-4">
+          <div className="col-md-4 mb-4">
             <div
-              className="progress"
+              className="progress mb-3"
               role="progressbar"
               aria-label="Success example"
               aria-valuenow="25"
@@ -125,7 +125,7 @@ function PerformanceBars() {
 
           <div className="col-md-4">
             <div
-              className="progress"
+              className="progress mb-3"
               role="progressbar"
               aria-label="Success example"
               aria-valuenow="25"

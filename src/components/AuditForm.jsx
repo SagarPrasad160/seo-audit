@@ -31,7 +31,7 @@ function AuditForm() {
         const onPageResults = await waitForOnPageAPITaskCompletion(
           onPageTaskId
         );
-
+        console.log("OnPage" + onPageResults);
         const items = onPageResults[0].items;
         setOnPageResults({
           onpage_score: items[0].onpage_score,
