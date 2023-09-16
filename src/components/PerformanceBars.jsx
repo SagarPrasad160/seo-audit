@@ -21,7 +21,7 @@ function PerformanceBars() {
           <h1 className="display-1 fw-bold">500</h1>
           <p className="fs-3">
             {" "}
-            <span className="text-danger">Opps!</span>Server Error.
+            <span className="text-danger">Oops!</span>
           </p>
           <p className="lead">Something went wrong.</p>
         </div>
