@@ -25,27 +25,24 @@ function AuditForm() {
     if (urlPattern.test(url)) {
       setLoading(true);
       try {
-        // OnPage API
         const domainName = url.replace(/(^\w+:|^)\/\//, "");
-        const onPageTaskId = await createOnPageAPITask(domainName);
-        const onPageResults = await waitForOnPageAPITaskCompletion(
-          onPageTaskId
-        );
-        console.log("OnPage" + onPageResults);
+
+        // wait for both requests to OnPage and lightHouse APIs resolve using Promise.all()
+        const [onPageTaskId, lightHouseTaskId] = await Promise.all([
+          createOnPageAPITask(domainName),
+          createLighthouseTask(`https://${domainName}`, true),
+        ]);
+
+        // fetch results
+        const [onPageResults, lightHouseResults] = await Promise.all([
+          waitForOnPageAPITaskCompletion(onPageTaskId),
+          waitForLighthouseTaskCompletion(lightHouseTaskId),
+        ]);
         const items = onPageResults[0].items;
         setOnPageResults({
           onpage_score: items[0].onpage_score,
           meta: items[0].meta,
         });
-
-        // Lighthouse Task API
-        const lightHouseTaskId = await createLighthouseTask(
-          `https://${domainName}`,
-          true
-        );
-        const lightHouseResults = await waitForLighthouseTaskCompletion(
-          lightHouseTaskId
-        );
 
         const lightHouseData = {
           audits: lightHouseResults[0].audits,
