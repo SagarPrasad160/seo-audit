@@ -12,8 +12,7 @@ export const AuditProvider = ({ children }) => {
   });
 
   const [onPageResults, setOnPageResults] = useState({
-    onpage_score: null,
-    meta: null,
+    data: null,
   });
 
   const [loading, setLoading] = useState(false);

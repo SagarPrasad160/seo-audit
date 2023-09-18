@@ -40,8 +40,7 @@ function AuditForm() {
         ]);
         const items = onPageResults[0].items;
         setOnPageResults({
-          onpage_score: items[0].onpage_score,
-          meta: items[0].meta,
+          data: items[0],
         });
 
         const lightHouseData = {

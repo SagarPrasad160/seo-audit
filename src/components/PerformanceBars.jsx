@@ -8,7 +8,7 @@ import Spinner from "./Spinner";
 function PerformanceBars() {
   const { lightHouseResults, onPageResults, loading, error } =
     useContext(AuditContext);
-  const { onpage_score, meta } = onPageResults;
+  const { data } = onPageResults;
 
   const { finalUrl, categories } = lightHouseResults;
 
@@ -31,7 +31,8 @@ function PerformanceBars() {
     );
   }
 
-  if (categories && meta) {
+  if (categories && data) {
+    const { onpage_score } = data;
     const {
       performance,
       accessibility,
@@ -41,7 +42,7 @@ function PerformanceBars() {
 
     return (
       <div className="w-75 mx-auto my-4">
-        <div className="fs-3 mb-5 text-center">Results for {finalUrl}</div>
+        <h1 className="fw-bold">Results for {finalUrl}</h1>
         <div className="mb-5">
           <h2>On-Page Score: {Math.round(onpage_score)}</h2>
           <div
@@ -146,7 +147,7 @@ function PerformanceBars() {
         </div>
         <div>
           <div className="fs-4 mb-3">OnPage Results</div>
-          <OnPage meta={meta} />
+          <OnPage data={data} />
         </div>
       </div>
     );
